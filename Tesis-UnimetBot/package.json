@@ -1,0 +1,40 @@
+{
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "async": "^2.5.0",
+    "dotenv": "^4.0.0",
+    "firebase": "^5.0.2",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2",
+    "path": "^0.12.7",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "replace": "^0.3.0",
+    "watson-react-components": "^0.6.9"
+  },
+  "devDependencies": {
+    "codecov": "^3.0.0",
+    "eslint": "^4.3.0",
+    "eslint-plugin-react": "^7.1.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^4.0.1",
+    "nock": "^9.0.14",
+    "react-scripts": "1.0.10",
+    "watson-developer-cloud": "^3.1.1"
+  },
+  "scripts": {
+    "start": "npm-run-all -p watch-css start-js",
+    "autofix": "eslint . --fix",
+    "build-css": "node-sass-chokidar src/ -o src/",
+    "build": "npm run build-css && react-scripts build",
+    "codecov": "npm run test && ./node_modules/.bin/codecov",
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "start-js": "react-scripts start",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha tests/**/* -- -R spec",
+    "train": "copy .env.example.env .env && node ./train-conversation.js && node ./train-discovery.js",
+    "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive"
+  }
+}
